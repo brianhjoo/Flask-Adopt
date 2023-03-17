@@ -5,7 +5,7 @@
 
 <h2>Pets</h2>
 {% for pet in pets %}
-<p>{{pet.name}}</p>
+<a href="/{{pet.id}}">{{pet.name}}</a>
 
 {%if pet.photo_url %}
 <img src="{{pet.photo_url}}" alt="{{pet.name}}">
