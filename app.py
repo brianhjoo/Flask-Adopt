@@ -28,3 +28,6 @@ def load_homepage():
 
     return render_template("homepage.html", pets=pets)
 
+@app.route("/add", method=["GET", "POST"])
+def add_pet():
+    form =
