@@ -56,3 +56,7 @@ def add_pet():
         return redirect('/')
     else:
         return render_template('add_pet_form.html', form=form)
+
+@app.route('/<int:pet_id>', methods=['GET', 'POST'])
+def edit_pet():
+
