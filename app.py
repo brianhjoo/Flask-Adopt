@@ -4,7 +4,7 @@ from flask import Flask
 
 from flask_debugtoolbar import DebugToolbarExtension
 
-from models import connect_db
+from models import connect_db, Pet, db
 
 app = Flask(__name__)
 
