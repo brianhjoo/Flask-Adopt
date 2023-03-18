@@ -23,35 +23,37 @@ class Pet(db.Model):
 
     id = db.Column(
         db.Integer,
-        primary_key = True,
-        autoincrement = True
+        primary_key=True,
+        autoincrement=True
     )
 
     name = db.Column(
         db.Text,
-        nullable = False
+        nullable=False
     )
 
     species = db.Column(
         db.Text,
-        nullable = False
+        nullable=False
     )
 
     photo_url = db.Column(
         db.Text,
-        nullable = False
+        nullable=False
     )
 
     age = db.Column(
         db.Text,
-        nullable = False
+        nullable=False
     )
 
     notes = db.Column(
-        db.Text
+        db.Text,
+        nullable=True
     )
 
     available = db.Column(
         db.Boolean,
-        default = True
+        default=True,
+        nullable=True
     )

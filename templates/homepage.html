@@ -5,15 +5,22 @@
 
 <h2>Pets</h2>
 {% for pet in pets %}
-<a href="/{{pet.id}}">{{pet.name}}</a>
 
-{%if pet.photo_url %}
-<img src="{{pet.photo_url}}" alt="{{pet.name}}">
-{% endif %}
+  {%if pet.photo_url %}
+    <img src="{{pet.photo_url}}" alt="{{pet.name}}">
+  {% endif %}
 
-{%if pet.available %}
-<p><b>Available</b></p>
-{% endif %}
+<p>
+  <a href="/{{pet.id}}">{{pet.name}}</a> is
+  {%if pet.available %}
+    <b>Available</b>
+  {% endif %}
+
+  {%if not pet.available %}
+    <b>Not Available</b>
+  {% endif %}
+</p>
+
 
 {% endfor %}
 

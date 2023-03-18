@@ -1,7 +1,7 @@
 """Forms for adopt app."""
 
 from flask_wtf import FlaskForm
-from wtforms import StringField, FloatField, SelectField, BooleanField
+from wtforms import StringField, SelectField, RadioField, TextAreaField
 from wtforms.validators import InputRequired, Optional, AnyOf, URL
 
 class AddPetForm(FlaskForm):
@@ -16,7 +16,7 @@ class AddPetForm(FlaskForm):
                         AnyOf(['cat', 'dog', 'porcupine'])
                     ])
 
-    photo_url = StringField("Photo URL", validators=[URL()])
+    photo_url = StringField("Photo URL", validators=[URL(), Optional()])
 
     age = SelectField(
         "Age",
@@ -26,20 +26,22 @@ class AddPetForm(FlaskForm):
                    ("senior","Senior")],
         validators = [InputRequired()])
 
-    notes = StringField("Notes")
+    notes = TextAreaField("Notes", validators = [Optional()] )
 
 
 class EditPetForm(FlaskForm):
     '''Edit pet'''
 
-    photo_url = StringField("Photo URL", validators=[URL()])
+    photo_url = StringField("Photo URL", validators=[URL(), Optional()])
 
-    notes = StringField("Notes")
+    notes = TextAreaField("Notes")
 
-    available = BooleanField(
+    available = RadioField(
             'Available',
-            default='checked',
-            validators=[InputRequired()]
+            choices=[("True", "Yes"), ("", "No")],
+            coerce=bool
     )
+
+    #note: booleanfield requires optional to not be checked
 
 

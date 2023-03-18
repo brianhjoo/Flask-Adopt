@@ -10,11 +10,32 @@
 
   {% if pet.photo_url %}
     <img src="{{pet.photo_url}}">
-  {{% endif %}}
+  {% endif %}
 
-  <h3>{{pet.age}}</h3>
+  <h3>Age: {{pet.age}}</h3>
 
-  <h3>{{pet.species}}</h3>
+  <h3>Species: {{pet.species}}</h3>
 
+  <h2> Edit {{ pet.name }}'s Record</h2>
+
+  <form method="POST">
+    {{ form.hidden_tag() }} <!--add type=hidden form fields -->
+
+    {% for field in form
+           if field.widget.input_type != 'hidden' %}
+
+      <p>
+        {{ field.label }}
+        {{ field }}
+
+        {% for error in field.errors %}
+          {{ error }}
+        {% endfor %}
+      </p>
+
+    {% endfor %}
+
+    <button type="submit">Save Edits</button>
+  </form>
 
 {% endblock %}
